@@ -1,5 +1,5 @@
 require 'map_site'
 
-class Wall
+class Wall < MapSite
 
 end

@@ -1,0 +1,17 @@
+h2. Ruby design patterns
+
+This repository is a collection of working examples of the "Gang of Four Design Patterns":http://www.amazon.co.uk/Design-patterns-elements-reusable-object-oriented/dp/0201633612/ written in Ruby. I am doing this as part of my personal studying and preparation for a weekly design patterns discussion at "Eden Development":http://edendevelopment.co.uk.
+
+Sometimes i follow the pattern given in the book, other times i make up my own. As a study group, we are working through the book in the order suggested by "A Learning Guide To Design Patterns":http://www.industriallogic.com/papers/learning.html so my examples will probably appear in the same order.
+
+My examples have tests which can be run by running @test.rb@ in the appropriate directory. For example:
+
+  ruby behavioral_patterns/strategy/test.rb
+
+These are the patterns that i have implemented so far:
+
+* The basic creational non-pattern used as a basis for the rest of the creational patterns
+* Factory Method
+* Strategy
+
+Please feel welcome to comment, point out my errors, and of course use for your own study and benefit. For a fast reference on how to implement design patterns in Ruby, i also recommend "shvets/design_patterns_in_ruby":http://github.com/shvets/design_patterns_in_ruby/.

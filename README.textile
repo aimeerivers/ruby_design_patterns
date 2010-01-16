@@ -10,8 +10,8 @@ My examples have tests which can be run by running @test.rb@ in the appropriate 
 
 These are the patterns that i have implemented so far:
 
-* The basic creational non-pattern used as a basis for the rest of the creational patterns
-* Factory Method
-* Strategy
+* The basic "creational non-pattern":http://github.com/sermoa/ruby_design_patterns/tree/master/creational_patterns/basic/ used as a basis for the rest of the creational patterns
+* "Factory Method":http://github.com/sermoa/ruby_design_patterns/tree/master/creational_patterns/factory_method/
+* "Strategy":http://github.com/sermoa/ruby_design_patterns/tree/master/behavioral_patterns/strategy/
 
 Please feel welcome to comment, point out my errors, and of course use for your own study and benefit. For a fast reference on how to implement design patterns in Ruby, i also recommend "shvets/design_patterns_in_ruby":http://github.com/shvets/design_patterns_in_ruby/.

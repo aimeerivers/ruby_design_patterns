@@ -1,0 +1,9 @@
+h2. Factory Method
+
+bq. Define an interface for creating an object, but let subclasses decide which class to instantiate. Factory Method lets a class defer instantiation to subclasses.
+
+I am so glad i decided to work these examples in Ruby. It's funny how i can skim over the code in the Design Patterns book and convince myself that i understand it when i really don't. There is a big difference between reading this book and studying it.
+
+Happily, after working out the basic creation of the maze and then adding factory methods to it, i can honestly say that i understand the Factory Method pattern for the first time. Rather than hardcoding @Door.new@ in the @MazeGame@ it defines a @new_door@ factory method which is ready to be overridden by other types of maze. I like that i don't have to know exactly what kind of a door the @EnchantedMazeGame@ will create: it decides for itself. The one thing i know is that it's going to be some kind of door, so it should behave like any door: namely that i can attempt to enter it. Everything else (i.e. needing a spell to get through the door) is neatly handled by subclasses.
+
+In our discussion group we talked about coupling and how factory methods can still be quite inflexible. At some point you still have to define what kind of a maze you want and what kind of doors it will produce. There is no way to get a maze in which some doors need a spell and others need a key, for example. At which point in the discussion Enrique smiled and said, "Aha, well come back next week when we discuss the Strategy pattern!" :)

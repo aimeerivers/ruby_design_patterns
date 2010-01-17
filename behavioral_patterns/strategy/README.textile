@@ -1,0 +1,15 @@
+h2. Strategy
+
+bq. Define a family of algorithms, encapsulate each one, and make them interchangeable. Strategy lets the algorithm vary independently from clients that use it.
+
+I like Strategy. It makes a lot of sense to me without any complicated explanations. I have actually used the Strategy pattern recently in "licky":http://github.com/sermoa/licky, my little wiki. I used a strategy to determine how to save pages and read them again. The strategy i use at the moment is saving to the file system, but it would be easy to swap in a different strategy that saves pages to a database.
+
+I did not think much of the example in the Gang of Four book, to do with line breaks. Well, as an example it's fine, but the problem was they left out all the really interesting code: the way that it works. The very thing that differs between the different strategies is simply rendered as a @// ...@
+
+So i came up with my own example. I decided to take sorting algorithms and implement them as different strategies. You can see from my tests that i have a shopping list of items that i want to sort alphabetically (why that would be useful i don't know, but please bear with me!) I implemented three different sorting strategies: Bubble Sort, Insertion Sort and Quick Sort.
+
+It was a very good exercise for me in remembering these different algorithms and how to write them. Insertion Sort gave me the most trouble because i was conceptualising it completely wrongly in my head. I think i now understand it properly, and i like to think that whenever i see the algorithm again i will now recognise it straight away and understand what it does, rather than my initial "huh?" reaction when i first looked at it!
+
+It was also interesting to compare the speeds of these 3 algorithms. Bubble Sort is the slowest and Quick Sort is the fastest. I'm sure there are many ways of optimizing these algorithms. I wrote them more for understanding rather than for speed, but please comment with your refactoring suggestions!
+
+The other interesting thing about this exercise is that i learned a bit more about Test::Unit. Since i wanted the same tests to be applied to each sorting strategy, i put them into a @create_sorter_tests@ method which uses @define_method@ to create the same tests for each class. I'm quite pleased with this, and how the @lambda@ makes it work.

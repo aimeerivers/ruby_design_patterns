@@ -1,0 +1,9 @@
+h2. Basic creational non-pattern
+
+This is not a design pattern. It's a basis for the other creational patterns to build upon and improve.
+
+I realised i had to write this before i worked on the Factory Method which actually varies only slightly from this in that it adds factory methods in the @MazeGame@, ready to be overridden.
+
+I really like the example of the maze with rooms, doors, walls and obstacles. At school we used to play a game called Merlin's Castle on the BBC Micro computers. It was exactly this kind of thing: a text-based adventure game where you had to walk around collecting items and solving puzzles. So you had to find a ladder to climb over a wall, find a plank to cross a stream, etc. I never actually finished the game, but i loved playing it!
+
+It has been my vague dream for a long time to recreate Merlin's Castle as a multiplayer web application. Hopefully with the skills i learn from implementing these patterns, i will have the knowledge to be able to do it! :)

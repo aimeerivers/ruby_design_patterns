@@ -8,7 +8,7 @@ class List
   end
 
   def sorted_items
-    @sorting_strategy.sort(@items)
+    @sorting_strategy.sort(@items.dup)
   end
 
 end

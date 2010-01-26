@@ -10,6 +10,7 @@ A few interesting consequences came out of the exercise, which i hadn't anticipa
 
 Firstly, you can add decorators twice. Consider the test:
 
+<pre>
   def test_beautiful_super_decorated_tree
     tree = LightsDecorator.new(
       TinselDecorator.new(
@@ -18,24 +19,31 @@ Firstly, you can add decorators twice. Consider the test:
             ChristmasTree.new))))
     assert_equal('LIGHTS, TINSEL, LIGHTS, BAUBELS, TREE', tree.decorations)
   end
+</pre>
 
 See i've added lights twice? That's perfectly okay. I can add two strings of lights to a christmas tree.
 
 Secondly, i wondered what if i didn't have a tree to decorate? Maybe all my decorations are sitting in a box. What happens?
 
+<pre>
   LightsDecorator.new(TinselDecorator.new)
+</pre>
 
 Actually an error happens. The @Decorator@ class, from which all decorators inherit, specifies that they decorate _something_.
 
+<pre>
   wrong number of arguments (0 for 1)
+</pre>
 
 This is great! The only type of @ChristmasDecoration@ in my design that does not need an argument is the @ChristmasTree@. This came about directly from following the pattern, yet i did not appreciate its consequence until i tried that test.
 
 Here's something i don't really like about the decorator pattern:
 
+<pre>
   tree = BaubelDecorator.new(ChristmasTree.new)
   tree.class
   => BaubelDecorator
+</pre>
 
 Although the program doesn't need to know about the decorators, and can treat the object just the same as if it had no decoration, it bothers me that the class is that of the outermost decorator.
 
@@ -47,6 +55,7 @@ Actually, in the real world, you would not expect the waitress to somehow remove
 
 It crossed my mind that i could combine the Decorator pattern with a factory method to generate ready decorated christmas trees! How about this:
 
+<pre>
   class ChristmasTreeSupplier
     def self.new_christmas_tree
       ChristmasTree.new
@@ -58,5 +67,6 @@ It crossed my mind that i could combine the Decorator pattern with a factory met
       BaubelDecorator.new(TinselDecorator.new(LightsDecorator.new(ChristmasTree.new)))
     end
   end
+</pre>
 
 Yay! Now i am combining patterns i have learnt! :)

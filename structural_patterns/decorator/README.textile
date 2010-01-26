@@ -1,0 +1,62 @@
+h2. Decorator
+
+bq. Attach additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality.
+
+When i thought about decoration i considered a real life example of decorating and thought, What better than a christmas tree?! :) We decorate christmas trees with lights, tinsel and baubels.
+
+My first problem, when following the pattern given in the Design Patterns book was to think of a superclass of both @ChristmasTree@ and its decorators. Enrique suggested @Christmas@, which i tried to begin with, but as soon as i added it into the decorators i realised it wasn't right. I then tried @ChristmasDecoration@ as the superclass, which seems to make a bit more sense.
+
+A few interesting consequences came out of the exercise, which i hadn't anticipated.
+
+Firstly, you can add decorators twice. Consider the test:
+
+  def test_beautiful_super_decorated_tree
+    tree = LightsDecorator.new(
+      TinselDecorator.new(
+        LightsDecorator.new(
+          BaubelDecorator.new(
+            ChristmasTree.new))))
+    assert_equal('LIGHTS, TINSEL, LIGHTS, BAUBELS, TREE', tree.decorations)
+  end
+
+See i've added lights twice? That's perfectly okay. I can add two strings of lights to a christmas tree.
+
+Secondly, i wondered what if i didn't have a tree to decorate? Maybe all my decorations are sitting in a box. What happens?
+
+  LightsDecorator.new(TinselDecorator.new)
+
+Actually an error happens. The @Decorator@ class, from which all decorators inherit, specifies that they decorate _something_.
+
+  wrong number of arguments (0 for 1)
+
+This is great! The only type of @ChristmasDecoration@ in my design that does not need an argument is the @ChristmasTree@. This came about directly from following the pattern, yet i did not appreciate its consequence until i tried that test.
+
+Here's something i don't really like about the decorator pattern:
+
+  tree = BaubelDecorator.new(ChristmasTree.new)
+  tree.class
+  => BaubelDecorator
+
+Although the program doesn't need to know about the decorators, and can treat the object just the same as if it had no decoration, it bothers me that the class is that of the outermost decorator.
+
+I know that there are other ways in Ruby to achieve the same effect as the decorator pattern, using mixins and includes. I came across "Decorator Pattern with Mixology":http://ruby.simapse.com/2008/08/test.html which was interesting to read because i learned about Mixology and how you can mix decorators in and out. I'm not sure the example is the best one though: 'decorating' a cup of coffee by adding cream ... and then trying to remove it again?
+
+bq. "I could ask the waitress to make me a Coffee.new but i don't want to pay my coffee twice."
+
+Actually, in the real world, you would not expect the waitress to somehow remove the cream molecules from the coffee ... a new cup of coffee would have to be made. Still, it is perfectly plausible to want to undecorate a christmas tree, so i can definitely see the benefit of the Mixology gem.
+
+It crossed my mind that i could combine the Decorator pattern with a factory method to generate ready decorated christmas trees! How about this:
+
+  class ChristmasTreeSupplier
+    def self.new_christmas_tree
+      ChristmasTree.new
+    end
+  end
+
+  class ReadyDecoratedChristmasTreeSupplier < ChristmasTreeSupplier
+    def self.new_christmas_tree
+      BaubelDecorator.new(TinselDecorator.new(LightsDecorator.new(ChristmasTree.new)))
+    end
+  end
+
+Yay! Now i am combining patterns i have learnt! :)

@@ -1,0 +1,13 @@
+h2. Composite
+
+bq. Compose objects into tree structures to represent part-whole hierarchies. Composite lets clients treat individual objects and compositions of objects uniformly.
+
+This was quite an easy pattern to code, once i'd understood it. The example in the book is simple to grasp: buying a computer cabinet containing a chassis which contains a bus and a floppy disk. The bus contains a network card. I am a fan of recursion, so i find the solution to calculate the net price quite elegant.
+
+One problem i encountered was to do with calculating the price for composite equipment. The @net_price@ method adds up the price of all the child items, but it also needs to add on its own price. Obviously i don't want to redefine @net_price@ in all subclasses of @CompositeEquipment@ so i initially created a @unit_price@ method. This wasn't very nice though because it meant that composite components had to set their price in @unit_price@ whereas leaf components would set their price in @net_price@.
+
+The next idea i had feels better: using a price instance variable in every object. I have overridden the @initialize@ method to set the price, but that's not the only way to do it. Storing the price as an instance variable potentially means that it can be changed at runtime, which seems like a good idea to me.
+
+It's not really obvious how the Design Patterns book solves this net price problem. The iterator adds up the net price of all child items, but it seems to assume that the @CompositeEquipment@ itself costs nothing.
+
+Oh, and i think i may have found a mistake in the book. After building up the composite, they output the net price of the chassis rather than the cabinet.

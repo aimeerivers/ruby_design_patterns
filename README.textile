@@ -14,5 +14,6 @@ These are the patterns that i have implemented so far:
 * "Factory Method":http://github.com/sermoa/ruby_design_patterns/tree/master/creational_patterns/factory_method/
 * "Strategy":http://github.com/sermoa/ruby_design_patterns/tree/master/behavioral_patterns/strategy/
 * "Decorator":http://github.com/sermoa/ruby_design_patterns/tree/master/structural_patterns/decorator/
+* "Composite":http://github.com/sermoa/ruby_design_patterns/tree/master/structural_patterns/composite/
 
 Please feel welcome to comment, add your feedback, suggest alternative implementations, point out my errors, and of course use for your own study and benefit. For a fast reference on how to implement design patterns in Ruby, i also recommend "shvets/design_patterns_in_ruby":http://github.com/shvets/design_patterns_in_ruby/.

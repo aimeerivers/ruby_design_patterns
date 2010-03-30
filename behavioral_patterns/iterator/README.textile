@@ -1,0 +1,9 @@
+h2. Iterator
+
+bq. Provide a way to access the elements of an aggregate object sequentially without exposing its underlying representation.
+
+So we all know that Ruby provides a very neat internal iterator using @Enumerable@ and the @each@ method which takes a block. We have no control over where and when the internal iterator moves its own index on; it just figures it out by itself.
+
+To make an external iterator i defined @first@, @next@ and @done?@ methods for a ListIterator class. The client (which in this case happens to be the test) is responsible for moving the index via those exposed methods. The client does not need to know where the index is currently: we can quite easily define a ReverseIterator which goes through the list backwards. As far as the client is concerned, that doesn't matter, but the iterator provides a useful way of accessing the items in the list.
+
+Even though an array can easily be traversed using Ruby's built in internal iterator, i decided to make my own version of an internal iterator anyway, to make sure i understood it. I called the method @each_item@ and i figured out that the internal iterator needed to accept a block, yield the item at its current index in order to perform the block, and move its index on.

@@ -1,0 +1,11 @@
+h2. Template Method
+
+bq. Define the skeleton of an algorithm in an operation, deferring some steps to subclasses. Template Method lets subclasses redifine certain steps of an algorithm without changing the algorithm's structure.
+
+I recently saw Jim Weirich show how the calculation of a square root could be refactored and generalised into an algorithm that can calculate any number by approximation and improving the estimate.
+
+The algorithm is basically this: guess a number. Improve the guess until it's good enough, and then return the guess.
+
+I thought this might be suitable for the template method. I have created an @ApproximationCalculator@ class which defines the general algorithm and provides a few methods that can be overridden when desired: @initial_guess@, @close_enough?@, @refine_guess@ and @final_answer@.
+
+The @SquareRootCalculator@ overrides three of the methods in order to define particular parts of the equation.

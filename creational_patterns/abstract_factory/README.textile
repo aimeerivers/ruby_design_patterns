@@ -1,0 +1,9 @@
+h2. Abstract Factory
+
+bq. Provide an interface for creating families of related or dependent objects without specifying their concrete classes.
+
+In coding the Abstract Factory, i noticed similarities to the Factory Method. In fact, my abstract factories use factory methods in a very similar way, and the tests were almost the same.
+
+The key difference is: instead of creating subclasses of the @MazeGame@ which override factory methods to create walls and rooms, i have just one @MazeGame@ which takes an Abstract Factory as a parameter. Those abstract factories contain the factory methods which may be overridden as necessary.
+
+The Abstract Factory implementation seems to have similar limitations as the Factory Method implementation. When creating an enchanted maze, all my rooms are going to be enchanted, and all my doors are going to need spells. I have no way to create a maze which has some enchanted rooms and some normal rooms. I can definitely see how this works well for a widget library where you want all the elements to match, but you might want to pass in a totally different abstract factory to completely change all the elements.

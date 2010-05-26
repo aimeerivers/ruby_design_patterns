@@ -1,0 +1,11 @@
+h2. Builder
+
+bq. Separate the construction of a complex object from its representation so that the same construction process can take different representations.
+
+This pattern feels rather like the Strategy pattern to me, only for creating things. It has a distinct feel of taking multiple things and sticking them together, so i can understand why the book says it is often used to create a Composite.
+
+I started with the basic non-pattern and reimplemented using the Builder. It's great to see different ways you can achieve the same result ... and even better to see how you can go on to extend it as i did by enabling the MazeGame to create a more complex maze (with 1001 rooms and no doors) and how i can use a different Builder who does not actually build the maze but instead calculates how many rooms and doors it needs!
+
+There is one problem with the sample code given in the book. On page 103 when building a door, it first creates the door, linking the two rooms together, then it tries to replace a wall in each room with the door. It applies a mysterious @CommonWall@ function which apparently finds the adjoining walls. However, the code says nothing about where in space the rooms are relative to each other. So i simply assumed that the first room given is to the West of the second room. This means that all the rooms will get lined up in one long corridor. It also means that you could create 'wormholes' to jump between the rooms! :)
+
+Ideally the maze would have some kind of two-dimensional grid which specifies where the rooms are relative to each other. It could then be able to find the common wall between two rooms, or raise an error if they are not actually adjacent to each other.

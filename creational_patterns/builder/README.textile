@@ -2,7 +2,7 @@ h2. Builder
 
 bq. Separate the construction of a complex object from its representation so that the same construction process can take different representations.
 
-This pattern feels rather like the Strategy pattern to me, only for creating things. It has a distinct feel of taking multiple things and sticking them together, so i can understand why the book says it is often used to create a Composite.
+This pattern feels rather like the Template pattern to me, only for creating things. It has a distinct feel of taking multiple things and sticking them together, so i can understand why the book says it is often used to create a Composite.
 
 I started with the basic non-pattern and reimplemented using the Builder. It's great to see different ways you can achieve the same result ... and even better to see how you can go on to extend it as i did by enabling the MazeGame to create a more complex maze (with 1001 rooms and no doors) and how i can use a different Builder who does not actually build the maze but instead calculates how many rooms and doors it needs!
 

@@ -1,0 +1,35 @@
+h2. Singleton
+
+bq. Ensure a class only has one instance, and provide a global point of access to it.
+
+There are two ways to implement the singleton pattern in ruby. Either in the way proposed by the book:
+
+<pre>
+  class MazeFactory
+
+    private_class_method :new
+
+    def self.instance
+      @@instance ||= new
+      @@instance
+    end
+
+  end
+</pre>
+
+... or alternatively, using the ruby Singleton class:
+
+<pre>
+  require 'singleton'
+  class MazeFactory
+    include Singleton
+  end
+</pre>
+
+Both methods pass the simple set of tests that i can think of:
+
+# that 'instance' provides a MazeFactory object
+# that two instances of MazeFactory object are equal to each other
+# that the 'new' method is inaccessible outside of the class
+
+This is a really simple pattern.
